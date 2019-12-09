@@ -1,0 +1,8 @@
+Logar:
+mysql -u root -p
+
+Criar:
+create database avalicao
+
+Entrar:
+use avaliacao
