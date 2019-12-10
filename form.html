@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+
+<link href="imagens/avaliacao.png" rel="icon" type="image/x-icon" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" charset="utf-8">
+<title>Avaliação</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+	<!-- Barra de Menu -->
+	<section id="navegador">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="home.html"><img src="imagens/avaliacao.png" style="width: 80px;">Sistema de Avaliação de Colaboladores</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="home.html">Home<span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="form.html">Cadastro de outros Diretores ou Subordinados</a></li>
+					<li class="nav-item"><a class="nav-link" href="subordinados.html">Subordinados</a></li>
+					<li class="nav-item"><a class="nav-link text-danger"  href="login.html" title="voltar para tela de login">@Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+	<h3 style="text-align: center; padding-top: 10px;">Cadastro de outros Diretores ou Subordinados</h3>
+
+	<div id="formFomulario">
+		<form method="post" action="@{/salvar}" enctype="multipart/form-data">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			<input type="hidden" name="id" th:value="${novo.id}" />
+			<input type="hidden" name="superior" th:value="${novo.superior != mull ? novo.superior.id : '-1'}" />
+
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<label for="idNome"><b>Nome*</b></label>
+						<input type="text" class="form-control" name="nome" id="idNome"/>
+
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<div th:if="${hierarquias.size() > 1}" class="form-group">
+						<label for="idHierarquia"><b>Hierarquia*</b></label>
+							<select name="hierarquia" class="form-control" id="idHierarquia" required>
+								<option th:value="1" th:selected="selected">Escolha uma hierarquia</option>
+								<option th:value="2" th:selected="selected">Diretor(a)</option>
+								<option th:value="3" th:selected="selected">Superintendente</option>
+							</select> 
+					</div>
+				</div>
+	
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<label for="idLogin"><b>Login*</b></label>
+						<input type="text" class="form-control" name="login" id="idLogin" />
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<label for="idSenha"><b>Senha*</b></label>
+						<input type="password" class="form-control" name="senha" id="idSenha" />
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-end">
+				<div class="col-auto">
+					<a class="btn btn-primary mt-2" href="form.html">Salvar</a>
+				</div>
+			</div>
+			<br>
+		</form>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
