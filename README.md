@@ -1,4 +1,5 @@
-# grupo3uspeach.github.io
+# https://grupo3uspeach.github.io/login
+O link de acesso à página de demonstração se encontra acima.
 
 O Projeto completamente funcional deve ser baixado e rodado localmente de acordo com o manual de instrução,
 as páginas disponibilizadas nesse diretório pelo Github Pages são apenas demonstração visual do projeto com a exclusão de alguns recursos visuais,
